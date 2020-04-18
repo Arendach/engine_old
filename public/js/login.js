@@ -16,10 +16,10 @@ $(document).ready(function () {
                 remember_me: remember_me
             },
             success: function () {
-                // if (window.location.pathname == '/login')
-                //     window.location.href = site;
-                // else
-                //     window.location.reload();
+                if (window.location.pathname == '/login')
+                    window.location.href = site;
+                else
+                    window.location.reload();
             },
             error: function (e) {
                 var response = JSON.parse(e.responseText);

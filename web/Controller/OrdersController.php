@@ -206,7 +206,7 @@ class OrdersController extends Controller
         if (isset($post->category_id))
             $where .= " `category` = '{$post->category_id}' ";
         elseif (isset($post->name))
-            $where .= " `name` LIKE '%{$post->name}%' ";
+            $where .= " `name` LIKE '%{$post->name}%' or articul like '%{$post->name}%'";
         elseif (isset($post->services_code))
             $where .= " `services_code` LIKE '%{$post->services_code}%' ";
 

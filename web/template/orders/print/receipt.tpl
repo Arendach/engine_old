@@ -210,7 +210,7 @@
         <?php foreach ($products as $product) { ?>
             <tr>
                 <td colspan="1">
-                    <?= $product->name ?>
+                    <?= $product->name ?> dsdsda
                 </td>
                 <td colspan="1">
                     <?= $product->identefire_storage ?> <br>

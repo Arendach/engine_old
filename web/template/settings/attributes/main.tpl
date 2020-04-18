@@ -11,11 +11,13 @@
 <?php if (my_count($items) > 0) { ?>
     <table class="table table-bordered" style="margin-bottom: 0">
         <tr>
+            <th>ID</th>
             <th>Назва</th>
             <th class="action-2">Дії</th>
         </tr>
         <?php foreach ($items as $item) { ?>
             <tr>
+                <td><?= $item->id ?></td>
                 <td><?= $item->name ?></td>
                 <td class="action-2">
                     <button data-type="get_form"

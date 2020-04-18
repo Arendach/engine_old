@@ -122,7 +122,7 @@ class NewPaginate
         list($path) = explode('?', $_SERVER['REQUEST_URI']);
 
         if ($this->absolute_path)
-            // $path = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $path;
+            $path = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['SERVER_NAME'] . $path;
 
         $this->url_first_page = $path . $url;
         $this->url_page = $p == '?' ? $path . '?page=' : $path . $url . '&page=';

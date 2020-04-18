@@ -8,6 +8,7 @@
 
     <table class="table table-bordered table-responsive">
         <tr>
+            <th>ID</th>
             <th>Назва</th>
             <th>Префікс</th>
             <th>Значення</th>
@@ -16,6 +17,7 @@
         </tr>
         <?php foreach ($items as $item) { ?>
             <tr>
+                <td><?= $item->id ?></td>
                 <td><?= $item->name_uk ?></td>
                 <td><?= $item->prefix_uk ?></td>
                 <td><?= $item->value_uk ?></td>

@@ -299,6 +299,8 @@ class ProductController extends Controller
         if (empty($post->procurement_costs)) response(400, 'Заповніть закупівельну вартість!');
         if (empty($post->costs)) response(400, 'Заповніть ціну!');
 
+        $post->product_key = rand32();
+
         $id = Products::save($post);
 
         response(200, [
@@ -667,6 +669,8 @@ class ProductController extends Controller
                 'price' => $product->costs,
                 'on_storage' => $product->count_on_storage > 0 ? 1 : 0,
                 'name_uk' => $product->name,
+                'model_uk' => $product->model,
+                'model_ru' => $product->model_ru,
                 'description_uk' => htmlspecialchars_decode($product->description),
                 'name_ru' => $product->name_ru,
                 'description_ru' => htmlspecialchars_decode($product->description_ru),
@@ -707,9 +711,11 @@ class ProductController extends Controller
             $products = R::findAll('products', "LIMIT $i, 100");
 
             foreach ($products as $product) {
-                $product->product_key = md5($product->id . date('Y-m-d H:i:s'));
-
-                R::store($product);
+                if (empty($product->key)){
+                    $product->product_key = md5($product->id . date('Y-m-d H:i:s'));
+    
+                    R::store($product);
+                }
             }
 
             echo number_format($i / $count * 100, 2) . '% <br>';

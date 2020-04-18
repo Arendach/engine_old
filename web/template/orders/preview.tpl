@@ -30,7 +30,7 @@
     </tr>
     <?php foreach (get_object($products) as $item) { ?>
         <tr>
-            <td><?= $item->name ?></td>
+            <td><?= $item->articul ?> <?= $item->name ?></td>
             <td><?= $item->storage_name ?></td>
             <td><?= $item->amount ?></td>
             <td><?= number_format($item->price, 2) ?></td>

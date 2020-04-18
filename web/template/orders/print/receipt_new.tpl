@@ -181,7 +181,7 @@
         <?php foreach ($products as $product) { ?>
             <tr>
                 <td colspan="1">
-                    <?= $product->name ?>
+                    <?= $product->articul ?> <?= $product->model ?> <?= $product->name ?>
                 </td>
                 <td colspan="1">
                     <?= $product->storage->name ?> - 

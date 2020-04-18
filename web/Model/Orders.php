@@ -461,6 +461,7 @@ class Orders extends Model
             $new[$i]['storage'] = $storage;
             $new[$i]['attributes'] = $item->attributes;
             $new[$i]['price'] = $item->price;
+            $new[$i]['model'] = $bean->model;
             $new[$i]['name'] = $bean->name;
             $new[$i]['description'] = $bean->description;
             $new[$i]['identefire_storage'] = $bean->identefire_storage;

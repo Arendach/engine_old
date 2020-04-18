@@ -15,7 +15,7 @@ class Category extends Model
      */
     public static function getMain()
     {
-        return R::findAll('categories', '`parent` = \'0\'');
+        return R::findAll('categories', '`parent` = \'0\' order by name asc');
     }
 
     /**
@@ -55,7 +55,7 @@ class Category extends Model
      */
     public static function getCategories()
     {
-        $rs = R::findAll('categories');
+        $rs = R::findAll('categories', 'order by name');
 
         if (my_count($rs) == 0)
             return false;
@@ -100,8 +100,9 @@ class Category extends Model
     {
         if (is_array($arr)) {
             foreach ($arr as $category) {
+                $count = R::count('products', 'category = ?', [$category['id']]);
                 $str .= '<tr>
-	                  <td>' . $parent . $category['name'] . '</td>
+	                  <td><a href="/product?category='. $category['id'] .'">' . $parent . $category['name'] . ' ('. $count .')</a></td>
 	                  <td>' . $category['service_code'] . '</td>
 	                  <td style="width: 69px;"> 
                       <button class="btn btn-primary btn-xs" data-action="update_form" data-uri="' . uri('category') . '" data-post="' . params(['id' => $category['id']]) . '" data-type="get_form" title="Редагувати"><span class="glyphicon glyphicon-pencil"></span></button>
